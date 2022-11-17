@@ -57,7 +57,6 @@ export default {
       }
     }
   },
-  
   mounted() {
     this.setSizes()
   },
@@ -67,9 +66,6 @@ export default {
   unmounted() {
     window.removeEventListener("resize", this.resize);
   },
-
-
-
   methods: {
     resize() {
       if(this.windowSize[0]!=0)
@@ -94,7 +90,7 @@ export default {
       this.move(event.touches[0])
     },
     start(event){
-      if( //проверка на клик по интерактивному объекту
+      if( //проверка на клик по области интерактивного объекта
       event.clientX - this.marginXY[0] >= this.currentXY[0] && 
       event.clientX - this.marginXY[0] <= this.currentXY[0]+this.interactiveElSize[0] &&
       event.clientY - this.marginXY[1] >= this.currentXY[1] &&
@@ -128,7 +124,7 @@ export default {
         this.borders.right.hide = true
       }
     },
-    moveEl(mouseX,mouseY){ //изменение координатинтерактивного объекта с проверкой максимальных/минимальных значений
+    moveEl(mouseX,mouseY){ //изменение координат интерактивного объекта с проверкой максимальных/минимальных значений
       let x = this.lastXY[0] + (mouseX - this.clickXY[0])
       let y = this.lastXY[1] + (mouseY - this.clickXY[1])
       if(x <= this.maximalXY[0] && x >= 0){ 
@@ -180,7 +176,6 @@ export default {
     },
     setSizes(){ //метод перезаписывает значения при изменении размера окна
       this.windowSize = [document.documentElement.clientWidth, document.documentElement.clientHeight]
-      //this.interactiveElSize = [document.getElementById('interactiveEl').offsetWidth, document.getElementById('interactiveEl').offsetHeight]
       this.responsiveElSize = [document.getElementById('responsiveEl').offsetWidth, document.getElementById('responsiveEl').offsetHeight]
       this.currentXY = [this.responsiveElSize[0]/2 - this.interactiveElSize[0]/2, this.responsiveElSize[1]/2 - this.interactiveElSize[1]/2],
       this.maximalXY = [this.responsiveElSize[0] - this.interactiveElSize[0], this.responsiveElSize[1] - this.interactiveElSize[1]]
@@ -189,7 +184,6 @@ export default {
     },
   }
 }
-
 </script>
 
 <style scoped>
@@ -213,7 +207,6 @@ export default {
   height: 100vh;
   z-index: 999;
 }
-
 .borders *{
   position: absolute;
   background: radial-gradient(circle, rgb(255 0 0) 0%, rgba(2,0,36,0) 100%);
